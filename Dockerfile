@@ -1,4 +1,5 @@
 # Build Stage
+# on mac install brew install filosottile/musl-cross/musl-cross
 FROM rust:1.50.0 AS builder
 WORKDIR /usr/src/
 RUN rustup target add x86_64-unknown-linux-musl
