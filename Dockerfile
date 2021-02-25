@@ -10,7 +10,7 @@ COPY Cargo.toml Cargo.lock ./
 RUN cargo build --release
 
 COPY src ./src
-RUN cargo install --target x86_64-unknown-linux-musl --path .
+RUN CC_x86_64_unknown_linux_musl=x86_64-linux-musl-gcc cargo install --target x86_64-unknown-linux-musl --path .
 
 
 # FROM gcr.io/distroless/static:nonroot
