@@ -4,13 +4,13 @@ FROM ekidd/rust-musl-builder:latest AS builder
 ADD --chown=rust:rust . ./
 RUN cargo build --release
 
-RUN USER=root cargo new custom_k8s_scheduler
-WORKDIR /usr/src/custom_k8s_scheduler
-COPY Cargo.toml Cargo.lock ./
-RUN cargo build --release
+# RUN USER=root cargo new custom_k8s_scheduler
+# WORKDIR /usr/src/custom_k8s_scheduler
+# COPY Cargo.toml Cargo.lock ./
+# RUN cargo build --release
 
-COPY src ./src
-RUN CC_x86_64_unknown_linux_musl=x86_64-linux-musl-gcc cargo install --target x86_64-unknown-linux-musl --path .
+# COPY src ./src
+# RUN cargo install --target x86_64-unknown-linux-musl --path .
 
 
 FROM alpine:latest
